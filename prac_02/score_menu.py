@@ -1,3 +1,8 @@
+"""
+CP1404/CP5632 - Practical 2
+Score menu
+"""
+
 import random
 
 
