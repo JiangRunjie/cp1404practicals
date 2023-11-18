@@ -1,18 +1,18 @@
+TOTAL_PRICE = 0
 DISCOUNT = 0.1
-MINIMUM_PRICE = 0
-DISCOUNT_REQUIRE = 100
 
-number_of_items = int(input("Number of items: "))
-total_price = 0
-for i in range(number_of_items):
-    price = float(input("Price of item: "))
-    while price < MINIMUM_PRICE:
-        print("Invalid number of items!")
-        price = float(input("Price of item: "))
-    else:
-        total_price += price
+items_number = int(input("Number of items: "))
 
-if total_price >= DISCOUNT_REQUIRE:
-    total_price *= (1 - DISCOUNT)
-print(f"Total price for {number_of_items} items is ${total_price:,.2f}")
+while items_number < 0:
+    print("Invalid number of items!")
+    items_number = int(input("Number of items: "))
+
+for i in range(items_number):
+    item_price = float(input("Number of items: "))
+    TOTAL_PRICE += item_price
+
+if TOTAL_PRICE > 100:
+    TOTAL_PRICE *= (1 - DISCOUNT)
+
+print("Total price for {0} items is ${1:.2f}".format(items_number, TOTAL_PRICE))
 
