@@ -1,22 +1,23 @@
-""""
-estimate: 30 mins
-actual: 30 mins
-"""
-email_name = {}
-
-while True:
+def main():
+    email_to_name = {}
     email = input("Email: ")
-    if not email:
-        break
-    username = email.split('@')[0]
-    name = input(f"Is your name {username.title()}? (Y/n) ")
-    if not name or name.lower() == "y":
-        email_name[email] = username
-    elif name.lower() == "n":
-        name = input("Name: ")
-        email_name[email] = name
+    while email != "":
+        name = get_name(email)
+        check_name = input("Is your name {}? (Y/n) ".format(name))
+        if check_name.upper() != "Y" and check_name != "":
+            name = input("Name: ")
+        email_to_name[email] = name
+        email = input("Email: ")
+    for key, value in email_to_name.items():
+        print("{} ({})".format(value, key))
 
-for email, name in email_name.items():
-    print(f"{name.title()} ({email})")
 
+def get_name(email):
+    fullname = email.split('@')[0]
+    part_of_name = fullname.split('.')
+    name = " ".join(part_of_name).title()
+    return name
+
+
+main()
 
